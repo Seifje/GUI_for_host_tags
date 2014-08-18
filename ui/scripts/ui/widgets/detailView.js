@@ -733,7 +733,19 @@
                     var existing_tags = to_json_array(data);
 
                     isAsync = true;
-
+                    var hint= "Type in a search term";
+                    var noResults= "No results";
+                    if ($value.data('value_token').label === 'label.storage.tags')
+                    {
+                        hint = "Type in part of a storage tag";
+                        noResults= "No storage tags found";
+                    }
+                    else
+                        if ($value.data('value_token').label === 'label.host.tags')
+                        {
+                            hint = "Type in part of a host tag";
+                            noResults = "No host tags found";
+                        }
                     selectArgs = {
                         context: $detailView.data('view-args').context,
                         response: {
@@ -743,7 +755,9 @@
                                     theme: "facebook",
                                     preventDuplicates: true,
                                     prePopulate: existing_tags,
-                                    processPrePopulate: true
+                                    processPrePopulate: true,
+                                    hintText : hint, 
+                                    noResultsText : noResults
                                 });
                             }
                         }
