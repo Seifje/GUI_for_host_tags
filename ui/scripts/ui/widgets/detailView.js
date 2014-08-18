@@ -487,7 +487,7 @@
                         {
                             $token = $value;
                         }
-                        else if ($input.attr('name') === "tags")
+                        else if (($input.attr('name') === "tags")||($input.attr('name') === "hosttags"))
                         {
                             tags_value = $input.attr('value');
                         }
@@ -566,11 +566,10 @@
                         if ($input.is('[type=checkbox]')) {
                             data[$input.attr('name')] = $input.is(':checked') ? 'on' : 'off';
                         } else {
-                            data[$input.attr('name')] = $input.val();
-                        }
+                            data[$input.attr('name')] = $input.val();                        }
                     });
 
-                    data['token-input-'] = data['tags'];
+                    //data['token-input-'] = data['tags'];
                     $editButton.fadeOut('fast', function() {
                         $editButton.remove();
                     });
